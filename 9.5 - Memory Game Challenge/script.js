@@ -25,13 +25,16 @@ let shuffledColors = shuffle(COLORS);
 // this function loops over the array of colors
 // it creates a new div and gives it a class with the value of the color
 // it also adds an event listener for a click for each card
+
 function createDivsForColors(colorArray) {
   for (let color of colorArray) {
     const newDiv = document.createElement("div");
     newDiv.classList.add(color);
     newDiv.addEventListener("click", handleCardClick);
     gameContainer.append(newDiv);
-
+    i=1;
+    i++;
+    newDiv.setAttribute('id', `card${i}`)
   };
 };
 
@@ -54,6 +57,10 @@ function handleCardClick(event) {
     console.log('first choice made');
     firstTarget = event.target;
 
+  } else if (clickedArray[0].getAttribute('id') === event.target.getAttribute('id')) {
+    console.log(event.target.getElementById);
+    console.log('clicked same card twice');
+
   } else if (clickedArray[0] == clickedArray[1]) {
     console.log('they match');
     clickedArray = [];
@@ -71,18 +78,3 @@ function handleCardClick(event) {
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
-
-
-
-
-
-//adds ids to cards?
-// const cards = document.querySelectorAll('div');
-//   for (let i = 0; i < cards.length; i++) {
-//     cards[i].id = 'card' + i;
-//   }
-
-// .getAttribute("id")
-// clickedCars[0].getAttribute('id')
-// event.target.getAttribute('id')
-// card_1, card_2, card_3, etc.
